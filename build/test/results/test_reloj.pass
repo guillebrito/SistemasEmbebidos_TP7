@@ -1,0 +1,50 @@
+---
+:source:
+  :path: test
+  :file: test_reloj.c
+:successes:
+- :test: test_inicializa_con_hora_invalida
+  :line: 14
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ajustar_hora_valida
+  :line: 26
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_seg_unidad
+  :line: 39
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_seg_decenas
+  :line: 57
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_min_unidades
+  :line: 75
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_min_decenas
+  :line: 93
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_horas_unidades
+  :line: 111
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_horas_decenas
+  :line: 129
+  :message: ''
+  :unity_test_time: 0
+- :test: test_avance_24_horas
+  :line: 147
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 9
+  :passed: 9
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.016385322998758056

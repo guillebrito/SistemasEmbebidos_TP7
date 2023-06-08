@@ -10,7 +10,15 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_inicializacion(void);
+extern void test_inicializa_con_hora_invalida(void);
+extern void test_ajustar_hora_valida(void);
+extern void test_avance_seg_unidad(void);
+extern void test_avance_seg_decenas(void);
+extern void test_avance_min_unidades(void);
+extern void test_avance_min_decenas(void);
+extern void test_avance_horas_unidades(void);
+extern void test_avance_horas_decenas(void);
+extern void test_avance_24_horas(void);
 
 
 /*=======Mock Management=====*/
@@ -81,7 +89,15 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_reloj.c");
-  run_test(test_inicializacion, "test_inicializacion", 3);
+  run_test(test_inicializa_con_hora_invalida, "test_inicializa_con_hora_invalida", 14);
+  run_test(test_ajustar_hora_valida, "test_ajustar_hora_valida", 26);
+  run_test(test_avance_seg_unidad, "test_avance_seg_unidad", 39);
+  run_test(test_avance_seg_decenas, "test_avance_seg_decenas", 57);
+  run_test(test_avance_min_unidades, "test_avance_min_unidades", 75);
+  run_test(test_avance_min_decenas, "test_avance_min_decenas", 93);
+  run_test(test_avance_horas_unidades, "test_avance_horas_unidades", 111);
+  run_test(test_avance_horas_decenas, "test_avance_horas_decenas", 129);
+  run_test(test_avance_24_horas, "test_avance_24_horas", 147);
 
   return UnityEnd();
 }
