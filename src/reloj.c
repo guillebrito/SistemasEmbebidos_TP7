@@ -179,8 +179,11 @@ bool AlarmGetState(clock_t reloj)
 
 void AlarmPostpone(clock_t reloj, uint8_t minutos)
 {
-    reloj->alarma_pospuesta = true;
-    memcpy(reloj->alarma_nueva, reloj->alarma, sizeof(reloj->alarma_nueva));
+    if (!reloj->alarma_pospuesta)
+    {
+        memcpy(reloj->alarma_nueva, reloj->alarma, sizeof(reloj->alarma_nueva));
+        reloj->alarma_pospuesta = true;
+    }
 
     for (int index = 0; index < (minutos * 60); index++)
     {

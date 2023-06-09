@@ -238,16 +238,16 @@ void test_posponer_alarma(void)
     clock_t reloj = ClockCreate(TICS, ActivarAlarma);
     ClockSetTime(reloj, INICIO, 6);
     AlarmSetTime(reloj, alarma, 6);
-    AlarmPostpone(reloj, 1);
 
     for (int index = 0; index < ciclos; index++)
     {
         ClockIncrement(reloj);
     }
     ClockGetTime(reloj, hora, 6);
+    AlarmPostpone(reloj, 1);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma, hora, 6);
-    TEST_ASSERT_FALSE(alarma_activa);
+    TEST_ASSERT_TRUE(alarma_activa);
 
     for (int index = 0; index < ciclos; index++)
     {
@@ -321,4 +321,37 @@ void test_probar_alarmas_invalidas(void)
     TEST_ASSERT_FALSE(AlarmGetTime(reloj, hora, 6));
     if (memcmp(ESPERADO, hora, sizeof(ESPERADO)) == 0)
         TEST_FAIL_MESSAGE("No rechaza hora invalida");
+}
+
+// Probar posponer mas de una vez
+void test_posponer_alarma_dos_veces(void)
+{
+    static const uint8_t INICIO[] = {1, 2, 3, 4, 0, 0};
+    uint8_t alarma[] = {1, 2, 3, 5, 0, 0}, alarma_nueva[] = {1, 2, 3, 7, 0, 0}, hora[6];
+    int ciclos = TICS * 60;
+    alarma_activa = false;
+
+    clock_t reloj = ClockCreate(TICS, ActivarAlarma);
+    ClockSetTime(reloj, INICIO, 6);
+    AlarmSetTime(reloj, alarma, 6);
+
+    for (int index = 0; index < ciclos; index++)
+    {
+        ClockIncrement(reloj);
+    }
+    ClockGetTime(reloj, hora, 6);
+    AlarmPostpone(reloj, 1);
+    AlarmPostpone(reloj, 1);
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma, hora, 6);
+    TEST_ASSERT_TRUE(alarma_activa);
+
+    for (int index = 0; index < (2 * ciclos); index++)
+    {
+        ClockIncrement(reloj);
+    }
+    ClockGetTime(reloj, hora, 6);
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma_nueva, hora, 6);
+    TEST_ASSERT_TRUE(alarma_activa);
 }

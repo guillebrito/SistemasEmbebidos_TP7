@@ -26,6 +26,7 @@ extern void test_posponer_alarma(void);
 extern void test_cancelar_alarma_24_hs(void);
 extern void test_probar_horas_invalidas(void);
 extern void test_probar_alarmas_invalidas(void);
+extern void test_posponer_alarma_dos_veces(void);
 
 
 /*=======Mock Management=====*/
@@ -112,6 +113,7 @@ int main(void)
   run_test(test_cancelar_alarma_24_hs, "test_cancelar_alarma_24_hs", 263);
   run_test(test_probar_horas_invalidas, "test_probar_horas_invalidas", 298);
   run_test(test_probar_alarmas_invalidas, "test_probar_alarmas_invalidas", 312);
+  run_test(test_posponer_alarma_dos_veces, "test_posponer_alarma_dos_veces", 327);
 
   return UnityEnd();
 }
