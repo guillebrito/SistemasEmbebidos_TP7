@@ -13,9 +13,9 @@ bool ClockSetTime(clock_t reloj, const uint8_t * hora, int size);
 
 bool ClockGetTime(clock_t reloj, uint8_t * hora, int size);
 
-void AlarmSetTime(clock_t reloj, const uint8_t * alarma, int size);
+bool AlarmSetTime(clock_t reloj, const uint8_t * alarma, int size);
 
-void AlarmGetTime(clock_t reloj, uint8_t * alarma, int size);
+bool AlarmGetTime(clock_t reloj, uint8_t * alarma, int size);
 
 void AlarmEnamble(clock_t reloj, bool estado);
 

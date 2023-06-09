@@ -19,49 +19,51 @@ struct clock_s
     uint8_t tics_por_segundo;
     uint8_t tics_actual;
     alarma_event_t ActivarAlarma;
-    bool hora_valida;
-    bool alarma_habilitada;
-    bool alarma_pospuesta;
+    bool hora_valida : 1;
+    bool alarma_valida : 1;
+    bool alarma_habilitada : 1;
+    bool alarma_pospuesta : 1;
 };
 
 void SecondsIncrement(uint8_t * hora);
 void AlarmCheck(clock_t reloj);
+bool HoraValida(const uint8_t * hora);
 
 void SecondsIncrement(uint8_t * hora)
 {
     SEGUNDOS_UNI++;
 
-    if (SEGUNDOS_UNI >= 10)
+    if (SEGUNDOS_UNI > 9)
     {
         SEGUNDOS_UNI = 0;
         SEGUNDOS_DEC++;
     }
 
-    if (SEGUNDOS_DEC >= 6)
+    if (SEGUNDOS_DEC > 5)
     {
         SEGUNDOS_DEC = 0;
         MINUTOS_UNI++;
     }
 
-    if (MINUTOS_UNI >= 10)
+    if (MINUTOS_UNI > 9)
     {
         MINUTOS_UNI = 0;
         MINUTOS_DEC++;
     }
 
-    if (MINUTOS_DEC >= 6)
+    if (MINUTOS_DEC > 5)
     {
         MINUTOS_DEC = 0;
         HORAS_UNI++;
     }
 
-    if (HORAS_UNI >= 10)
+    if (HORAS_UNI > 9)
     {
         HORAS_UNI = 0;
         HORAS_DEC++;
     }
 
-    if (HORAS_DEC >= 2 && HORAS_UNI >= 4)
+    if (HORAS_DEC > 1 && HORAS_UNI > 3)
     {
         HORAS_DEC = 0;
         HORAS_UNI = 0;
@@ -80,6 +82,18 @@ void AlarmCheck(clock_t reloj)
         reloj->ActivarAlarma(true);
         reloj->alarma_pospuesta = false;
     }
+}
+
+bool HoraValida(const uint8_t * hora)
+{
+    bool valida = true;
+
+    if (SEGUNDOS_UNI > 9 || SEGUNDOS_DEC > 5 || MINUTOS_UNI > 9 || MINUTOS_DEC > 5 || HORAS_UNI > 9 || HORAS_DEC > 2 ||
+        (HORAS_UNI > 3 && HORAS_DEC > 1))
+    {
+        valida = false;
+    }
+    return valida;
 }
 
 clock_t ClockCreate(int tics_por_segundo, alarma_event_t ActivarAlarma)
@@ -111,10 +125,15 @@ void ClockIncrement(clock_t reloj)
 
 bool ClockSetTime(clock_t reloj, const uint8_t * hora, int size)
 {
-    memcpy(reloj->hora_actual, hora, size);
-    reloj->hora_valida = true;
+    reloj->hora_valida = false;
 
-    return true;
+    if (HoraValida(hora))
+    {
+        memcpy(reloj->hora_actual, hora, size);
+        reloj->hora_valida = true;
+    }
+
+    return reloj->hora_valida;
 }
 
 bool ClockGetTime(clock_t reloj, uint8_t * hora, int size)
@@ -124,19 +143,26 @@ bool ClockGetTime(clock_t reloj, uint8_t * hora, int size)
     return reloj->hora_valida;
 }
 
-void AlarmSetTime(clock_t reloj, const uint8_t * alarma, int size)
+bool AlarmSetTime(clock_t reloj, const uint8_t * alarma, int size)
 {
-    memcpy(reloj->alarma, alarma, size);
-    AlarmEnamble(reloj, true);
+    reloj->alarma_valida = false;
+    AlarmEnamble(reloj, false);
 
-    return;
+    if (HoraValida(alarma))
+    {
+        memcpy(reloj->alarma, alarma, size);
+        AlarmEnamble(reloj, true);
+        reloj->alarma_valida = true;
+    }
+
+    return reloj->alarma_valida;
 }
 
-void AlarmGetTime(clock_t reloj, uint8_t * alarma, int size)
+bool AlarmGetTime(clock_t reloj, uint8_t * alarma, int size)
 {
     memcpy(alarma, reloj->alarma, size);
 
-    return;
+    return reloj->alarma_valida;
 }
 
 void AlarmEnamble(clock_t reloj, bool estado)

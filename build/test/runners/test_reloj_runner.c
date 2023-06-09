@@ -24,6 +24,8 @@ extern void test_sonar_alarma(void);
 extern void test_deshabilitar_alarma(void);
 extern void test_posponer_alarma(void);
 extern void test_cancelar_alarma_24_hs(void);
+extern void test_probar_horas_invalidas(void);
+extern void test_probar_alarmas_invalidas(void);
 
 
 /*=======Mock Management=====*/
@@ -94,20 +96,22 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_reloj.c");
-  run_test(test_inicializa_con_hora_invalida, "test_inicializa_con_hora_invalida", 20);
-  run_test(test_ajustar_hora_valida, "test_ajustar_hora_valida", 32);
-  run_test(test_avance_seg_unidad, "test_avance_seg_unidad", 45);
-  run_test(test_avance_seg_decenas, "test_avance_seg_decenas", 63);
-  run_test(test_avance_min_unidades, "test_avance_min_unidades", 81);
-  run_test(test_avance_min_decenas, "test_avance_min_decenas", 99);
-  run_test(test_avance_horas_unidades, "test_avance_horas_unidades", 117);
-  run_test(test_avance_horas_decenas, "test_avance_horas_decenas", 135);
-  run_test(test_avance_24_horas, "test_avance_24_horas", 153);
-  run_test(test_fijar_alarma, "test_fijar_alarma", 171);
-  run_test(test_sonar_alarma, "test_sonar_alarma", 184);
-  run_test(test_deshabilitar_alarma, "test_deshabilitar_alarma", 207);
-  run_test(test_posponer_alarma, "test_posponer_alarma", 232);
-  run_test(test_cancelar_alarma_24_hs, "test_cancelar_alarma_24_hs", 264);
+  run_test(test_inicializa_con_hora_invalida, "test_inicializa_con_hora_invalida", 19);
+  run_test(test_ajustar_hora_valida, "test_ajustar_hora_valida", 31);
+  run_test(test_avance_seg_unidad, "test_avance_seg_unidad", 44);
+  run_test(test_avance_seg_decenas, "test_avance_seg_decenas", 62);
+  run_test(test_avance_min_unidades, "test_avance_min_unidades", 80);
+  run_test(test_avance_min_decenas, "test_avance_min_decenas", 98);
+  run_test(test_avance_horas_unidades, "test_avance_horas_unidades", 116);
+  run_test(test_avance_horas_decenas, "test_avance_horas_decenas", 134);
+  run_test(test_avance_24_horas, "test_avance_24_horas", 152);
+  run_test(test_fijar_alarma, "test_fijar_alarma", 170);
+  run_test(test_sonar_alarma, "test_sonar_alarma", 183);
+  run_test(test_deshabilitar_alarma, "test_deshabilitar_alarma", 206);
+  run_test(test_posponer_alarma, "test_posponer_alarma", 231);
+  run_test(test_cancelar_alarma_24_hs, "test_cancelar_alarma_24_hs", 263);
+  run_test(test_probar_horas_invalidas, "test_probar_horas_invalidas", 298);
+  run_test(test_probar_alarmas_invalidas, "test_probar_alarmas_invalidas", 312);
 
   return UnityEnd();
 }

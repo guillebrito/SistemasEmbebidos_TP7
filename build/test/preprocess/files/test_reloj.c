@@ -8,8 +8,6 @@
 
 
 
-
-
 static 
 
       _Bool 
@@ -64,13 +62,13 @@ void test_inicializa_con_hora_invalida(void)
 
 
 
-    do {if (!(ClockGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(27)));}} while(0);
+    do {if (!(ClockGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(26)));}} while(0);
 
     UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(28), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(27), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -92,15 +90,15 @@ void test_ajustar_hora_valida(void)
 
 
 
-    do {if ((ClockSetTime(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(39)));}} while(0);
+    do {if ((ClockSetTime(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(38)));}} while(0);
 
-    do {if ((ClockGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(40)));}} while(0);
+    do {if ((ClockGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(39)));}} while(0);
 
     UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(40), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -140,7 +138,7 @@ void test_avance_seg_unidad(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(59), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(58), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -180,7 +178,7 @@ void test_avance_seg_decenas(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(76), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -220,7 +218,7 @@ void test_avance_min_unidades(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(95), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(94), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -260,7 +258,7 @@ void test_avance_min_decenas(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(112), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -300,7 +298,7 @@ void test_avance_horas_unidades(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(131), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(130), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -340,7 +338,7 @@ void test_avance_horas_decenas(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(149), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(148), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -380,7 +378,7 @@ void test_avance_24_horas(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(167), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(166), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -400,17 +398,17 @@ void test_fijar_alarma(void)
 
     clock_t reloj = ClockCreate(10, ActivarAlarma);
 
-    AlarmSetTime(reloj, ESPERADO, 6);
-
-    AlarmGetTime(reloj, alarma, 6);
 
 
+    do {if ((AlarmSetTime(reloj, ESPERADO, 6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(177)));}} while(0);
+
+    do {if ((AlarmGetTime(reloj, alarma, 6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(178)));}} while(0);
 
     UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((alarma)), (UNITY_UINT32)((6)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(180), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(179), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -462,9 +460,9 @@ void test_sonar_alarma(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(202), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(201), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(203)));}} while(0);
+    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(202)));}} while(0);
 
 }
 
@@ -522,11 +520,11 @@ void test_deshabilitar_alarma(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(226), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(225), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if (!(AlarmGetState(reloj))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(227)));}} while(0);
+    do {if (!(AlarmGetState(reloj))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(226)));}} while(0);
 
-    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(228)));}} while(0);
+    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(227)));}} while(0);
 
 }
 
@@ -578,9 +576,9 @@ void test_posponer_alarma(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(250), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(249), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(251)));}} while(0);
+    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(250)));}} while(0);
 
 
 
@@ -600,9 +598,9 @@ void test_posponer_alarma(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(259), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(258), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(260)));}} while(0);
+    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(259)));}} while(0);
 
 }
 
@@ -652,9 +650,9 @@ void test_cancelar_alarma_24_hs(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(281), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(280), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(282)));}} while(0);
+    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(281)));}} while(0);
 
 
 
@@ -662,7 +660,7 @@ void test_cancelar_alarma_24_hs(void)
 
 
 
-    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(286)));}} while(0);
+    do {if (!(alarma_activa)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(285)));}} while(0);
 
 
 
@@ -682,8 +680,66 @@ void test_cancelar_alarma_24_hs(void)
 
    ((void *)0)
 
-   ), (UNITY_UINT)(294), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(293), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
-    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(295)));}} while(0);
+    do {if ((alarma_activa)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(294)));}} while(0);
+
+}
+
+
+
+
+
+void test_probar_horas_invalidas(void)
+
+{
+
+    static const uint8_t ESPERADO[] = {2, 4, 0, 0, 0, 0};
+
+    uint8_t hora[6];
+
+
+
+    clock_t reloj = ClockCreate(10, ActivarAlarma);
+
+
+
+    do {if (!(ClockSetTime(reloj, ESPERADO, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(305)));}} while(0);
+
+    do {if (!(ClockGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(306)));}} while(0);
+
+    if (memcmp(ESPERADO, hora, sizeof(ESPERADO)) == 0)
+
+        UnityFail( (("No rechaza hora invalida")), (UNITY_UINT)(308));
+
+}
+
+
+
+
+
+void test_probar_alarmas_invalidas(void)
+
+{
+
+    static const uint8_t ESPERADO[] = {2, 4, 0, 0, 0, 0}, INICIO[] = {0, 0, 0, 0, 0, 0};
+
+    uint8_t hora[6];
+
+
+
+    clock_t reloj = ClockCreate(10, ActivarAlarma);
+
+    ClockSetTime(reloj, INICIO, 6);
+
+
+
+    do {if (!(AlarmSetTime(reloj, ESPERADO, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(320)));}} while(0);
+
+    do {if (!(AlarmGetTime(reloj, hora, 6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(321)));}} while(0);
+
+    if (memcmp(ESPERADO, hora, sizeof(ESPERADO)) == 0)
+
+        UnityFail( (("No rechaza hora invalida")), (UNITY_UINT)(323));
 
 }

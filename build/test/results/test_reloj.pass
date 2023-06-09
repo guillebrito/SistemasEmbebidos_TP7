@@ -4,67 +4,75 @@
   :file: test_reloj.c
 :successes:
 - :test: test_inicializa_con_hora_invalida
-  :line: 20
+  :line: 19
   :message: ''
   :unity_test_time: 0
 - :test: test_ajustar_hora_valida
-  :line: 32
+  :line: 31
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_seg_unidad
-  :line: 45
+  :line: 44
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_seg_decenas
-  :line: 63
+  :line: 62
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_min_unidades
-  :line: 81
+  :line: 80
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_min_decenas
-  :line: 99
+  :line: 98
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_horas_unidades
-  :line: 117
+  :line: 116
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_horas_decenas
-  :line: 135
+  :line: 134
   :message: ''
   :unity_test_time: 0
 - :test: test_avance_24_horas
-  :line: 153
+  :line: 152
   :message: ''
   :unity_test_time: 0
 - :test: test_fijar_alarma
-  :line: 171
+  :line: 170
   :message: ''
   :unity_test_time: 0
 - :test: test_sonar_alarma
-  :line: 184
+  :line: 183
   :message: ''
   :unity_test_time: 0
 - :test: test_deshabilitar_alarma
-  :line: 207
+  :line: 206
   :message: ''
   :unity_test_time: 0
 - :test: test_posponer_alarma
-  :line: 232
+  :line: 231
   :message: ''
   :unity_test_time: 0
 - :test: test_cancelar_alarma_24_hs
-  :line: 264
+  :line: 263
+  :message: ''
+  :unity_test_time: 0
+- :test: test_probar_horas_invalidas
+  :line: 298
+  :message: ''
+  :unity_test_time: 0
+- :test: test_probar_alarmas_invalidas
+  :line: 312
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 14
-  :passed: 14
+  :total: 16
+  :passed: 16
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.043415026004367974
+:time: 0.042077911995875183

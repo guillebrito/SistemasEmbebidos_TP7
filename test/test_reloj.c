@@ -1,7 +1,6 @@
-// Probar horas invalidas y verificar que las rechaza
-
 #include "unity.h"
 #include "reloj.h"
+#include "string.h"
 
 #define TICS 10
 
@@ -174,9 +173,9 @@ void test_fijar_alarma(void)
     uint8_t alarma[6];
 
     clock_t reloj = ClockCreate(TICS, ActivarAlarma);
-    AlarmSetTime(reloj, ESPERADO, 6);
-    AlarmGetTime(reloj, alarma, 6);
 
+    TEST_ASSERT_TRUE(AlarmSetTime(reloj, ESPERADO, 6));
+    TEST_ASSERT_TRUE(AlarmGetTime(reloj, alarma, 6));
     TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO, alarma, 6);
 }
 
@@ -293,4 +292,33 @@ void test_cancelar_alarma_24_hs(void)
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma, hora, 6);
     TEST_ASSERT_TRUE(alarma_activa);
+}
+
+// Probar horas invalidas y verificar que las rechaza
+void test_probar_horas_invalidas(void)
+{
+    static const uint8_t ESPERADO[] = {2, 4, 0, 0, 0, 0};
+    uint8_t hora[6];
+
+    clock_t reloj = ClockCreate(TICS, ActivarAlarma);
+
+    TEST_ASSERT_FALSE(ClockSetTime(reloj, ESPERADO, 6));
+    TEST_ASSERT_FALSE(ClockGetTime(reloj, hora, 6));
+    if (memcmp(ESPERADO, hora, sizeof(ESPERADO)) == 0)
+        TEST_FAIL_MESSAGE("No rechaza hora invalida");
+}
+
+// Probar alarmas invalidas y verificar que las rechaza
+void test_probar_alarmas_invalidas(void)
+{
+    static const uint8_t ESPERADO[] = {2, 4, 0, 0, 0, 0}, INICIO[] = {0, 0, 0, 0, 0, 0};
+    uint8_t hora[6];
+
+    clock_t reloj = ClockCreate(TICS, ActivarAlarma);
+    ClockSetTime(reloj, INICIO, 6);
+
+    TEST_ASSERT_FALSE(AlarmSetTime(reloj, ESPERADO, 6));
+    TEST_ASSERT_FALSE(AlarmGetTime(reloj, hora, 6));
+    if (memcmp(ESPERADO, hora, sizeof(ESPERADO)) == 0)
+        TEST_FAIL_MESSAGE("No rechaza hora invalida");
 }
