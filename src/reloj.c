@@ -1,6 +1,39 @@
+/************************************************************************************************
+Copyright (c) 2023, Guillermo Nicolás Brito <guillermonbrito@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+SPDX-License-Identifier: MIT
+*************************************************************************************************/
+
+/** \brief Brief description of the file
+ **
+ ** Full file description
+ **
+ ** \addtogroup name Module denomination
+ ** \brief Brief description of the module
+ ** @{ */
+
+/* === Headers files inclusions =============================================================== */
+
 #include "reloj.h"
 #include <stddef.h>
 #include <string.h>
+
+/* === Macros definitions ====================================================================== */
 
 #define SEGUNDOS_UNI  hora[5]
 #define SEGUNDOS_DEC  hora[4]
@@ -11,23 +44,38 @@
 
 #define Compara(a, b) memcmp(reloj->a, reloj->b, sizeof(reloj->a)) == 0
 
+/* === Private data type declarations ========================================================== */
+
+/* === Private variable declarations =========================================================== */
+
 struct clock_s
 {
     uint8_t hora_actual[6];
+    bool hora_valida : 1;
+    int tics_por_segundo;
+    int tics_actual;
+
+    alarma_event_t ActivarAlarma;
     uint8_t alarma[6];
     uint8_t alarma_nueva[6];
-    uint8_t tics_por_segundo;
-    uint8_t tics_actual;
-    alarma_event_t ActivarAlarma;
-    bool hora_valida : 1;
     bool alarma_valida : 1;
     bool alarma_habilitada : 1;
     bool alarma_pospuesta : 1;
 };
 
+/* === Private function declarations =========================================================== */
+
 void SecondsIncrement(uint8_t * hora);
+
 void AlarmCheck(clock_t reloj);
+
 bool HoraValida(const uint8_t * hora);
+
+/* === Public variable definitions ============================================================= */
+
+/* === Private variable definitions ============================================================ */
+
+/* === Private function implementation ========================================================= */
 
 void SecondsIncrement(uint8_t * hora)
 {
@@ -96,6 +144,10 @@ bool HoraValida(const uint8_t * hora)
     return valida;
 }
 
+/* === Public function implementation ========================================================== */
+
+//******Funciones asociadas al reloj*******//
+
 clock_t ClockCreate(int tics_por_segundo, alarma_event_t ActivarAlarma)
 {
     static struct clock_s self[1];
@@ -143,6 +195,39 @@ bool ClockGetTime(clock_t reloj, uint8_t * hora, int size)
     return reloj->hora_valida;
 }
 
+//*****Funciones asociadas a la alarma*****//
+
+void AlarmEnamble(clock_t reloj, bool estado)
+{
+    reloj->alarma_habilitada = estado;
+
+    return;
+}
+
+void AlarmPostpone(clock_t reloj, uint8_t minutos)
+{
+    if (!reloj->alarma_pospuesta)
+    {
+        memcpy(reloj->alarma_nueva, reloj->alarma, sizeof(reloj->alarma_nueva));
+        reloj->alarma_pospuesta = true;
+        reloj->ActivarAlarma(false);
+    }
+
+    for (int index = 0; index < (minutos * 60); index++)
+    {
+        SecondsIncrement(reloj->alarma_nueva);
+    }
+
+    return;
+}
+
+void AlarmCancel(clock_t reloj)
+{
+    reloj->ActivarAlarma(false);
+
+    return;
+}
+
 bool AlarmSetTime(clock_t reloj, const uint8_t * alarma, int size)
 {
     reloj->alarma_valida = false;
@@ -165,37 +250,11 @@ bool AlarmGetTime(clock_t reloj, uint8_t * alarma, int size)
     return reloj->alarma_valida;
 }
 
-void AlarmEnamble(clock_t reloj, bool estado)
-{
-    reloj->alarma_habilitada = estado;
-
-    return;
-}
-
 bool AlarmGetState(clock_t reloj)
 {
     return reloj->alarma_habilitada;
 }
 
-void AlarmPostpone(clock_t reloj, uint8_t minutos)
-{
-    if (!reloj->alarma_pospuesta)
-    {
-        memcpy(reloj->alarma_nueva, reloj->alarma, sizeof(reloj->alarma_nueva));
-        reloj->alarma_pospuesta = true;
-    }
+/* === End of documentation ==================================================================== */
 
-    for (int index = 0; index < (minutos * 60); index++)
-    {
-        SecondsIncrement(reloj->alarma_nueva);
-    }
-
-    return;
-}
-
-void AlarmCancel(clock_t reloj)
-{
-    reloj->ActivarAlarma(false);
-
-    return;
-}
+/** @} End of module definition for doxygen */

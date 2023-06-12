@@ -56,19 +56,19 @@
   :message: ''
   :unity_test_time: 0
 - :test: test_cancelar_alarma_24_hs
-  :line: 263
+  :line: 265
   :message: ''
   :unity_test_time: 0
 - :test: test_probar_horas_invalidas
-  :line: 298
+  :line: 300
   :message: ''
   :unity_test_time: 0
 - :test: test_probar_alarmas_invalidas
-  :line: 312
+  :line: 314
   :message: ''
   :unity_test_time: 0
 - :test: test_posponer_alarma_dos_veces
-  :line: 327
+  :line: 329
   :message: ''
   :unity_test_time: 0
 :failures: []
@@ -79,4 +79,4 @@
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.058817812001507264
+:time: 0.05228948900003161

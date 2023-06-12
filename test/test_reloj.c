@@ -244,10 +244,12 @@ void test_posponer_alarma(void)
         ClockIncrement(reloj);
     }
     ClockGetTime(reloj, hora, 6);
-    AlarmPostpone(reloj, 1);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma, hora, 6);
     TEST_ASSERT_TRUE(alarma_activa);
+
+    AlarmPostpone(reloj, 1);
+    TEST_ASSERT_FALSE(alarma_activa); // pruebo que dejo de sonar la alarma
 
     for (int index = 0; index < ciclos; index++)
     {
@@ -340,11 +342,14 @@ void test_posponer_alarma_dos_veces(void)
         ClockIncrement(reloj);
     }
     ClockGetTime(reloj, hora, 6);
-    AlarmPostpone(reloj, 1);
-    AlarmPostpone(reloj, 1);
 
     TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma, hora, 6);
     TEST_ASSERT_TRUE(alarma_activa);
+
+    AlarmPostpone(reloj, 1);
+    AlarmPostpone(reloj, 1);
+
+    TEST_ASSERT_FALSE(alarma_activa); // pruebo que dejo de sonar la alarma
 
     for (int index = 0; index < (2 * ciclos); index++)
     {
@@ -355,3 +360,4 @@ void test_posponer_alarma_dos_veces(void)
     TEST_ASSERT_EQUAL_UINT8_ARRAY(alarma_nueva, hora, 6);
     TEST_ASSERT_TRUE(alarma_activa);
 }
+// mostrar nueva alama al posponer

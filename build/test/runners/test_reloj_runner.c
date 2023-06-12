@@ -110,10 +110,10 @@ int main(void)
   run_test(test_sonar_alarma, "test_sonar_alarma", 183);
   run_test(test_deshabilitar_alarma, "test_deshabilitar_alarma", 206);
   run_test(test_posponer_alarma, "test_posponer_alarma", 231);
-  run_test(test_cancelar_alarma_24_hs, "test_cancelar_alarma_24_hs", 263);
-  run_test(test_probar_horas_invalidas, "test_probar_horas_invalidas", 298);
-  run_test(test_probar_alarmas_invalidas, "test_probar_alarmas_invalidas", 312);
-  run_test(test_posponer_alarma_dos_veces, "test_posponer_alarma_dos_veces", 327);
+  run_test(test_cancelar_alarma_24_hs, "test_cancelar_alarma_24_hs", 265);
+  run_test(test_probar_horas_invalidas, "test_probar_horas_invalidas", 300);
+  run_test(test_probar_alarmas_invalidas, "test_probar_alarmas_invalidas", 314);
+  run_test(test_posponer_alarma_dos_veces, "test_posponer_alarma_dos_veces", 329);
 
   return UnityEnd();
 }
