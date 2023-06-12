@@ -126,7 +126,7 @@ void test_avance_seg_unidad(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -166,7 +166,7 @@ void test_avance_seg_decenas(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -206,7 +206,7 @@ void test_avance_min_unidades(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -246,7 +246,7 @@ void test_avance_min_decenas(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -286,7 +286,7 @@ void test_avance_horas_unidades(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -326,7 +326,7 @@ void test_avance_horas_decenas(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -366,7 +366,7 @@ void test_avance_24_horas(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -446,7 +446,7 @@ void test_sonar_alarma(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -506,7 +506,7 @@ void test_deshabilitar_alarma(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -562,7 +562,7 @@ void test_posponer_alarma(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -590,7 +590,7 @@ void test_posponer_alarma(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -642,7 +642,7 @@ void test_cancelar_alarma_24_hs(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -672,7 +672,7 @@ void test_cancelar_alarma_24_hs(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -782,7 +782,7 @@ void test_posponer_alarma_dos_veces(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 
@@ -814,7 +814,7 @@ void test_posponer_alarma_dos_veces(void)
 
     {
 
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
 
     }
 

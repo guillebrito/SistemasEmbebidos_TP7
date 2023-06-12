@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabajo Práctico N°7: Fichero Fuente inc/reloj.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Trabajo Práctico N°7
+   &#160;<span id="projectnumber">V 0.1</span>
+   </div>
+   <div id="projectbrief">Funcionamiento de reloj</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">reloj.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/************************************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">Copyright (c) 2023, Guillermo Nicolás Brito &lt;guillermonbrito@gmail.com&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction,</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">including without limitation the rights to use, copy, modify, merge, publish, distribute,</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">furnished to do so, subject to the following conditions:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">The above copyright notice and this permission notice shall be included in all copies or substantial</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">portions of the Software.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">SPDX-License-Identifier: MIT</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">*************************************************************************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef RELOJ_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define RELOJ_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* === Headers files inclusions ================================================================ */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* === Cabecera C++ ============================================================================ */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">/* === Public macros definitions =============================================================== */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/* === Public data type declarations =========================================================== */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="group__reloj.html#gaa40ff194677bc4499482b420e219e5ce">   47</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structclock__s.html">clock_s</a> * <a class="code" href="group__reloj.html#gaa40ff194677bc4499482b420e219e5ce">clock_t</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="group__reloj.html#gad44e80e54fd8635e9950e90627e096db">   50</a></span>&#160;    <span class="keyword">typedef</span> void (*<a class="code" href="group__reloj.html#gad44e80e54fd8635e9950e90627e096db">alarma_event_t</a>)(<span class="keywordtype">bool</span> estado);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">/* === Public variable declarations ============================================================ */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">/* === Public function declarations ============================================================ */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">//******Funciones asociadas al reloj*******//</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="structclock__s.html">clock_t</a> <a class="code" href="group__reloj.html#ga725bfaf099ee09046e1b4c59a3ce1653">ClockCreate</a>(<span class="keywordtype">int</span> tics_por_segundo, <a class="code" href="group__reloj.html#gad44e80e54fd8635e9950e90627e096db">alarma_event_t</a> ActivarAlarma);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group__reloj.html#gace4a944f80aa740c2ca32b827d57f64e">ClockRefresh</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="group__reloj.html#gab7cb12dad55c2784949ed2c4cca02dea">ClockSetTime</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, <span class="keyword">const</span> uint8_t * hora, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="group__reloj.html#gaf43a4e8d04251917d234ba404248b2f2">ClockGetTime</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, uint8_t * hora, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//*****Funciones asociadas a la alarma*****//</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group__reloj.html#gab4280b17fc2c707ca7d05bdf784f8f0f">AlarmEnamble</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, <span class="keywordtype">bool</span> estado);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group__reloj.html#ga4675418b04c5ded120a21405161add43">AlarmPostpone</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, uint8_t minutos);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="group__reloj.html#gac26acd65e56e65bdd292d547a77937b7">AlarmCancel</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="group__reloj.html#gaad3750cd39b3966a3a801ca5bc3c82a5">AlarmSetTime</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, <span class="keyword">const</span> uint8_t * alarma, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="group__reloj.html#ga9316482c682d309fb0ec9d604399045a">AlarmGetTime</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj, uint8_t * alarma, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="group__reloj.html#gad5e37ee2ad9d7a301e3e468009ce8c1b">AlarmGetState</a>(<a class="code" href="structclock__s.html">clock_t</a> reloj);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">/* === End of documentation ==================================================================== */</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* RELOJ_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup__reloj_html_ga4675418b04c5ded120a21405161add43"><div class="ttname"><a href="group__reloj.html#ga4675418b04c5ded120a21405161add43">AlarmPostpone</a></div><div class="ttdeci">void AlarmPostpone(clock_t reloj, uint8_t minutos)</div><div class="ttdoc">Método para posponer la alarma cierta cantidad de minutos.</div><div class="ttdef"><b>Definition:</b> reloj.c:198</div></div>
+<div class="ttc" id="agroup__reloj_html_ga725bfaf099ee09046e1b4c59a3ce1653"><div class="ttname"><a href="group__reloj.html#ga725bfaf099ee09046e1b4c59a3ce1653">ClockCreate</a></div><div class="ttdeci">clock_t ClockCreate(int tics_por_segundo, alarma_event_t ActivarAlarma)</div><div class="ttdoc">Método para crear reloj.</div><div class="ttdef"><b>Definition:</b> reloj.c:142</div></div>
+<div class="ttc" id="agroup__reloj_html_ga9316482c682d309fb0ec9d604399045a"><div class="ttname"><a href="group__reloj.html#ga9316482c682d309fb0ec9d604399045a">AlarmGetTime</a></div><div class="ttdeci">bool AlarmGetTime(clock_t reloj, uint8_t *alarma, int size)</div><div class="ttdoc">Método para consultar la alarma.</div><div class="ttdef"><b>Definition:</b> reloj.c:237</div></div>
+<div class="ttc" id="agroup__reloj_html_gaa40ff194677bc4499482b420e219e5ce"><div class="ttname"><a href="group__reloj.html#gaa40ff194677bc4499482b420e219e5ce">clock_t</a></div><div class="ttdeci">struct clock_s * clock_t</div><div class="ttdoc">Tipo de dato puntero al descriptor del reloj.</div><div class="ttdef"><b>Definition:</b> reloj.h:47</div></div>
+<div class="ttc" id="agroup__reloj_html_gaad3750cd39b3966a3a801ca5bc3c82a5"><div class="ttname"><a href="group__reloj.html#gaad3750cd39b3966a3a801ca5bc3c82a5">AlarmSetTime</a></div><div class="ttdeci">bool AlarmSetTime(clock_t reloj, const uint8_t *alarma, int size)</div><div class="ttdoc">Método para fijar la alarma.</div><div class="ttdef"><b>Definition:</b> reloj.c:222</div></div>
+<div class="ttc" id="agroup__reloj_html_gab4280b17fc2c707ca7d05bdf784f8f0f"><div class="ttname"><a href="group__reloj.html#gab4280b17fc2c707ca7d05bdf784f8f0f">AlarmEnamble</a></div><div class="ttdeci">void AlarmEnamble(clock_t reloj, bool estado)</div><div class="ttdoc">Método para habilitar la alarma.</div><div class="ttdef"><b>Definition:</b> reloj.c:191</div></div>
+<div class="ttc" id="agroup__reloj_html_gab7cb12dad55c2784949ed2c4cca02dea"><div class="ttname"><a href="group__reloj.html#gab7cb12dad55c2784949ed2c4cca02dea">ClockSetTime</a></div><div class="ttdeci">bool ClockSetTime(clock_t reloj, const uint8_t *hora, int size)</div><div class="ttdoc">Método para fijar la hora del reloj.</div><div class="ttdef"><b>Definition:</b> reloj.c:169</div></div>
+<div class="ttc" id="agroup__reloj_html_gac26acd65e56e65bdd292d547a77937b7"><div class="ttname"><a href="group__reloj.html#gac26acd65e56e65bdd292d547a77937b7">AlarmCancel</a></div><div class="ttdeci">void AlarmCancel(clock_t reloj)</div><div class="ttdoc">Método para cancelar la alarma mientras suena hasta el día siguiente.</div><div class="ttdef"><b>Definition:</b> reloj.c:215</div></div>
+<div class="ttc" id="agroup__reloj_html_gace4a944f80aa740c2ca32b827d57f64e"><div class="ttname"><a href="group__reloj.html#gace4a944f80aa740c2ca32b827d57f64e">ClockRefresh</a></div><div class="ttdeci">void ClockRefresh(clock_t reloj)</div><div class="ttdoc">Método para actualizar la hora del reloj.</div><div class="ttdef"><b>Definition:</b> reloj.c:155</div></div>
+<div class="ttc" id="agroup__reloj_html_gad44e80e54fd8635e9950e90627e096db"><div class="ttname"><a href="group__reloj.html#gad44e80e54fd8635e9950e90627e096db">alarma_event_t</a></div><div class="ttdeci">void(* alarma_event_t)(bool estado)</div><div class="ttdoc">Tipo de dato puntero a función tipo callback para activar alarma.</div><div class="ttdef"><b>Definition:</b> reloj.h:50</div></div>
+<div class="ttc" id="agroup__reloj_html_gad5e37ee2ad9d7a301e3e468009ce8c1b"><div class="ttname"><a href="group__reloj.html#gad5e37ee2ad9d7a301e3e468009ce8c1b">AlarmGetState</a></div><div class="ttdeci">bool AlarmGetState(clock_t reloj)</div><div class="ttdoc">Método para consultar el estado de la alarma.</div><div class="ttdef"><b>Definition:</b> reloj.c:244</div></div>
+<div class="ttc" id="agroup__reloj_html_gaf43a4e8d04251917d234ba404248b2f2"><div class="ttname"><a href="group__reloj.html#gaf43a4e8d04251917d234ba404248b2f2">ClockGetTime</a></div><div class="ttdeci">bool ClockGetTime(clock_t reloj, uint8_t *hora, int size)</div><div class="ttdoc">Método para consultar la hora del reloj.</div><div class="ttdef"><b>Definition:</b> reloj.c:182</div></div>
+<div class="ttc" id="astructclock__s_html"><div class="ttname"><a href="structclock__s.html">clock_s</a></div><div class="ttdef"><b>Definition:</b> reloj.c:43</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -51,7 +51,7 @@ void test_avance_seg_unidad(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -69,7 +69,7 @@ void test_avance_seg_decenas(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -87,7 +87,7 @@ void test_avance_min_unidades(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -105,7 +105,7 @@ void test_avance_min_decenas(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -123,7 +123,7 @@ void test_avance_horas_unidades(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -141,7 +141,7 @@ void test_avance_horas_decenas(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -159,7 +159,7 @@ void test_avance_24_horas(void)
     ClockSetTime(reloj, INICIO, 6);
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -193,7 +193,7 @@ void test_sonar_alarma(void)
 
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
 
     ClockGetTime(reloj, hora, 6);
@@ -217,7 +217,7 @@ void test_deshabilitar_alarma(void)
 
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
 
     ClockGetTime(reloj, hora, 6);
@@ -241,7 +241,7 @@ void test_posponer_alarma(void)
 
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -253,7 +253,7 @@ void test_posponer_alarma(void)
 
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -275,7 +275,7 @@ void test_cancelar_alarma_24_hs(void)
 
     for (int index = 0; index < ciclos_minuto; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -288,7 +288,7 @@ void test_cancelar_alarma_24_hs(void)
 
     for (int index = 0; index < ciclos_dia; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -339,7 +339,7 @@ void test_posponer_alarma_dos_veces(void)
 
     for (int index = 0; index < ciclos; index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 
@@ -353,7 +353,7 @@ void test_posponer_alarma_dos_veces(void)
 
     for (int index = 0; index < (2 * ciclos); index++)
     {
-        ClockIncrement(reloj);
+        ClockRefresh(reloj);
     }
     ClockGetTime(reloj, hora, 6);
 

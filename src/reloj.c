@@ -18,15 +18,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
-
-/** \brief Brief description of the file
- **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
- ** @{ */
-
 /* === Headers files inclusions =============================================================== */
 
 #include "reloj.h"
@@ -48,19 +39,20 @@ SPDX-License-Identifier: MIT
 
 /* === Private variable declarations =========================================================== */
 
+//! Descriptor del reloj
 struct clock_s
 {
-    uint8_t hora_actual[6];
-    bool hora_valida : 1;
-    int tics_por_segundo;
-    int tics_actual;
+    uint8_t hora_actual[6]; //! Vector de tamaño 6 con la hora actual.
+    bool hora_valida : 1;   //! Indicador de hora válida.
+    int tics_por_segundo;   //! Cantidad de tics para incrementar la hora en un segundo.
+    int tics_actual;        //! Cantidad de tics actuales.
 
-    alarma_event_t ActivarAlarma;
-    uint8_t alarma[6];
-    uint8_t alarma_nueva[6];
-    bool alarma_valida : 1;
-    bool alarma_habilitada : 1;
-    bool alarma_pospuesta : 1;
+    alarma_event_t ActivarAlarma; //! Función callback para activar la alarma.
+    uint8_t alarma[6];            //! Vector de tamaño 6 con la alarma.
+    uint8_t alarma_nueva[6];      //! Vector de tamaño 6 con la alarma luego de posponerla.
+    bool alarma_valida : 1;       //! Indicador de alarma válida.
+    bool alarma_habilitada : 1;   //! Indicador de alarma habilitada.
+    bool alarma_pospuesta : 1;    //! Indicador de alarma pospuesta.
 };
 
 /* === Private function declarations =========================================================== */
@@ -120,11 +112,13 @@ void SecondsIncrement(uint8_t * hora)
 
 void AlarmCheck(clock_t reloj)
 {
+    // Alarma normal
     if (Compara(hora_actual, alarma) && reloj->alarma_habilitada && !(reloj->alarma_pospuesta))
     {
         reloj->ActivarAlarma(true);
     }
 
+    // alarma pospuesta
     if (Compara(hora_actual, alarma_nueva) && reloj->alarma_habilitada && reloj->alarma_pospuesta)
     {
         reloj->ActivarAlarma(true);
@@ -155,13 +149,11 @@ clock_t ClockCreate(int tics_por_segundo, alarma_event_t ActivarAlarma)
     memset(self, 0, sizeof(self));
     self->tics_por_segundo = tics_por_segundo;
     self->ActivarAlarma = ActivarAlarma;
-    self->alarma_habilitada = false;
-    self->alarma_pospuesta = false;
 
     return self;
 }
 
-void ClockIncrement(clock_t reloj)
+void ClockRefresh(clock_t reloj)
 {
     reloj->tics_actual++;
 
@@ -206,14 +198,14 @@ void AlarmEnamble(clock_t reloj, bool estado)
 
 void AlarmPostpone(clock_t reloj, uint8_t minutos)
 {
-    if (!reloj->alarma_pospuesta)
+    if (!reloj->alarma_pospuesta) // Se ejecuta solo la primera vez que se pospone
     {
         memcpy(reloj->alarma_nueva, reloj->alarma, sizeof(reloj->alarma_nueva));
         reloj->alarma_pospuesta = true;
         reloj->ActivarAlarma(false);
     }
 
-    for (int index = 0; index < (minutos * 60); index++)
+    for (int index = 0; index < (minutos * 60); index++) // Incrementa la alarma pospuesta x minutos
     {
         SecondsIncrement(reloj->alarma_nueva);
     }
